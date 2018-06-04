@@ -33,6 +33,14 @@ public class CubeStatus : MonoBehaviour {
     }
 
 
+    IEnumerator EffectCO()
+    {
+
+        effect.Execute();
+        yield return new WaitForSecondsRealtime(effect.effectDuration);
+        effect.EndEffect();
+        yield return null;
+    }
 
 
 
@@ -40,15 +48,19 @@ public class CubeStatus : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (effect != null)
+            {
+                StartCoroutine(EffectCO());
 
-            effect.Execute();
+            }
+
             gameManager.CountScore(score);
             if (finalCube == true)
             {
                 gameManager.FinalCube(finalScore);
             }
 
-            this.gameObject.SetActive(false);
+            transform.position = new Vector3(1000,1000,1000);
         }
 
     }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public Transform[] checkPoints;
-    public BallStatus playerStatus;
-    public BallMovement playerMovement;
+    public GameObject player;
+    public Camera camera;
 
     //text 
 
@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour {
 
 
     GameObject finalCube;
+    BallStatus playerStatus;
+    BallMovement playerMovement;
     //--------------------------------------
 
     void InitializeEffects()
@@ -37,20 +39,12 @@ public class GameManager : MonoBehaviour {
 
             switch (eff.effectNumber)
             {
-                case CubeEffects.SLOWDOWN:
-                    SlowDownEffect slowEff = (SlowDownEffect)eff;
-                    slowEff.ballMovement=playerMovement;
-                    break;
-                case CubeEffects.SPEEDUP:
-                    SpeedUpEffect speedEff = (SpeedUpEffect)eff;
-                    speedEff.ballMovement = playerMovement;
-                    break;
-                case CubeEffects.INVISIBILITY:
-                    InvisibilityEffect invisibleEff = (InvisibilityEffect)eff;
-                    invisibleEff.player = playerMovement.gameObject.transform;
+                case CubeEffects.FLIPCAMERA:
+                    eff.Initialize(camera.gameObject);
                     break;
                 default:
-                    break;
+                    eff.Initialize(player);                    
+                    break;                    
             }
 
 
@@ -83,6 +77,14 @@ public class GameManager : MonoBehaviour {
             {
 
                 cube.GetComponent<CubeStatus>().SetEffect(allEffects[(int)CubeEffects.INVISIBILITY]);
+
+            }
+
+
+            else if ((0.75 < rndValue) && (rndValue <= 0.75))
+            {
+
+                cube.GetComponent<CubeStatus>().SetEffect(allEffects[(int)CubeEffects.FLIPCAMERA]);
 
             }
 
@@ -158,6 +160,9 @@ public class GameManager : MonoBehaviour {
     void Start () {
 
         finalCube = GameObject.FindGameObjectWithTag("finalCube");
+        playerStatus = player.GetComponent<BallStatus>();
+        playerMovement = player.GetComponent<BallMovement>();
+
         InitializeEffects();
 
 

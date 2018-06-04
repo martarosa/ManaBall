@@ -7,15 +7,29 @@ public class InvisibilityEffect : CubesRndEffect
 {
 
     
-    public Transform player;
+    MeshRenderer renderer;
 
 
 
     void MakeInvisible()
     {
 
-        player.GetComponent<MeshRenderer>().enabled = false;
+        renderer.enabled = false;
 
+    }
+
+
+    void ResetVisible()
+    {
+
+        renderer.enabled = true;
+
+    }
+
+
+    public override void Initialize(GameObject target)
+    {
+        renderer = target.GetComponent<MeshRenderer>();
     }
 
     public override void Execute()
@@ -27,7 +41,12 @@ public class InvisibilityEffect : CubesRndEffect
 
 
 
+    public override void EndEffect()
+    {
+        
+        ResetVisible();
 
+    }
 
 
 }

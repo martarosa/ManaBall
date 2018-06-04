@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public enum CubeEffects { SLOWDOWN, SPEEDUP, INVISIBILITY
+public enum CubeEffects { SLOWDOWN, SPEEDUP, INVISIBILITY, FLIPCAMERA
 
 }
 
@@ -14,11 +14,23 @@ public class CubesRndEffect : ScriptableObject
     [Range(0, 1)]
     public float probability;
 
+
+    public virtual void Initialize(GameObject player)
+    {
+
+
+    }
+
     public virtual void Execute()
     {
 
     }
-    
+
+    public virtual void EndEffect()
+    {
+
+
+    }
 
 }
 

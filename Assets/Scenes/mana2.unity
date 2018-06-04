@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1019,20 +1019,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPoints:
   - {fileID: 281338726}
-  playerStatus: {fileID: 603541183}
-  playerMovement: {fileID: 603541177}
+  player: {fileID: 603541176}
+  camera: {fileID: 824125535}
   scoreText: {fileID: 1232662280}
   winText: {fileID: 913147934}
   allEffects:
   - {fileID: 11400000, guid: 8750dcd47fac5fa42a26c8d08a6934f4, type: 2}
   - {fileID: 11400000, guid: 0a1f9f1e0344e8946a36699ef7dbd451, type: 2}
+  - {fileID: 11400000, guid: 1818e6a39dd14114080273b3fc8fba4e, type: 2}
+  - {fileID: 11400000, guid: 965e7b8f0069caf4dbbb69f0b913d144, type: 2}
 --- !u!4 &859766495
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 859766493}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.430647, y: -3.0566483, z: 0.71435547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
